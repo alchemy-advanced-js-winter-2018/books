@@ -19,6 +19,7 @@
   "devDependencies": {
     "charly-state-store": "^1.0.1",
     "eslint": "^4.17.0",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
   }
 }
