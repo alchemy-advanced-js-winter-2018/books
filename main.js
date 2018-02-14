@@ -1,3 +1,7 @@
-import Books from 'Books';
+// import Books from 'Books';
 
-new Books();
+// new Books();
+
+import test from './test';
+
+test();
