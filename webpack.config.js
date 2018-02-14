@@ -1,4 +1,3 @@
-
 /* eslint-env node */
 const HtmlPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -8,7 +7,7 @@ const buildDir = `${__dirname}/build`;
 module.exports = {
   // our starting point for our javascript
   // (everything is tracked by being "required" (or "imported"))
-  entry: './main.js',
+  entry: './src/main.js',
   // What do we want to call the output, and where do we want to put it?
   output: {
     filename: 'bundle.js',
@@ -25,7 +24,7 @@ module.exports = {
     new CleanWebpackPlugin(buildDir),
     // create an index.html based on our template,
     // will add in <script> to bundle.js
-    new HtmlPlugin({ template: './index.html' }),
+    new HtmlPlugin({ template: './src/index.html' }),
   ],
   // module: {
   //   // "loaders" tell webpack how to require (or import) things
