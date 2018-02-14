@@ -1,0 +1,24 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heicj/books.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heicj/books/issues"
+  },
+  "homepage": "https://github.com/heicj/books#readme",
+  "devDependencies": {
+    "charly-state-store": "^1.0.1",
+    "eslint": "^4.17.0",
+    "webpack": "^3.11.0"
+  }
+}
