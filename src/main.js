@@ -1,7 +1,5 @@
-// import Books from 'Books';
+import Books from './Books';
 
-// new Books();
+const myBook = new Books();
 
-import test from 'test';
-
-test();
+myBook.searchBooks('house');
