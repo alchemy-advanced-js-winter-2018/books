@@ -9,7 +9,8 @@ export default class Book extends Store{
       search: [],
       topic: '',
       title: '',
-      searchSize: 10
+      searchSize: 10,
+      page: 0
     };
 
     const section = document.getElementById('bookSect');
@@ -34,13 +35,29 @@ export default class Book extends Store{
       this.searchBook();
     });
 
+    this.prev.addEventListener('click', () => {
+      let num = (this.page < 10) ? 0 : -10;
+      
+      this.setState({
+        page: this.state.page - num
+      });
+      this.searchBook();
+    });
+  
+    this.next.addEventListener('click', () => {
+      this.setState({
+        page: this.state.page + 10
+      });
+      this.searchBook();
+    });
+
     this.subscribe(() => this.render());
     this.render();
   }
 
   searchBook(){
-    const { topic, searchSize } = this.state;
-    getBooks(topic, searchSize)
+    const { topic, searchSize, page } = this.state;
+    getBooks(topic, searchSize, page)
       .then(response => {
         this.setState({
           search: response.items,
