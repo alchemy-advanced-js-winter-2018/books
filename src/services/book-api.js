@@ -1,5 +1,5 @@
 const API_KEY = 'AIzaSyAoODC168yeXM1wuYrPRWKDiYSzaRa4kwU';
-const URL = 'https://www.googleapis.com/books/v1/volumes?q=intitle:';
+const URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:';
 
 
 //dog&key=AIzaSyAoODC168yeXM1wuYrPRWKDiYSzaRa4kwU
