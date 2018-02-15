@@ -56,13 +56,13 @@ export default class Book extends Store {
     getBooks(search, page, maxResults)
       .then(response => {
         this.setState({
-          books: response.books,
-          total: response.totalResults,
+          books: response.items,
+          total: response.totalItems,
           error: null
         });
       })
       .catch(err => {
-        return 'Server Error' + err;
+        return 'Server Error:' + err;
       });
   }
 
@@ -80,7 +80,7 @@ export default class Book extends Store {
 
     const totalPages = Math.ceil(total / maxResults);
 
-    heading.textContent = `Results: page ${page} of ${totalPages} about ${search}`;
+    heading.textContent = `Results: Page ${page} of ${totalPages} about ${search}`;
 
     this.prev.disabled = page === 1;
     this.next.disabled = page === totalPages;
@@ -88,7 +88,7 @@ export default class Book extends Store {
     books
       .map(n => {
         const li = document.createElement('li');
-        li.textContent = n.title;
+        li.textContent = n.volumeInfo.title;
         return li;
       })
       .forEach(li => list.appendChild(li));
