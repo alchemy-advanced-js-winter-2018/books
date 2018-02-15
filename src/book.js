@@ -7,13 +7,14 @@ export default class Book extends Store{
 
     this.state = {
       search: null,
-      topic: ''
+      topic: '',
+      title: ''
     };
 
     const section = document.getElementById('bookSect');
     this.form = section.querySelector('form');
     this.heading = section.querySelector('h1');
-    this.ul = section.querySelector('ul');
+    this.list = section.querySelector('ul');
     this.pageSize = section.querySelector('select');
     this.prev = section.querySelector('#prev');
     this.next = section.querySelector('#next');
@@ -29,11 +30,11 @@ export default class Book extends Store{
 
   searchBook(){
     const { search, topic } = this.state;
-
+    console.log(topic);
     getBooks(topic)
       .then(response => {
         this.setState({
-          result: response.items.volumeInfo.title
+          search: response.items
         });
       }).catch(err=>{
         return ('server error', err);
@@ -46,14 +47,14 @@ export default class Book extends Store{
     list.innerHTML = null;
 
     const { search, topic } = this.state;
-    
+    console.log(search);
     if(!search){
       heading.textContent = 'No results';
     }
 
     search.map(n => {
       const li = document.createElement('li');
-      li.textContent = n.title;
+      li.textContent = n.volumeInfo.title;
       return li;
     })
       .forEach(li => list.appendChild(li));
