@@ -8,7 +8,8 @@ export default class Book extends Store {
     this.state = {
       book: null,
       page: 1,
-      maxResults: 20
+      maxResults: 10,
+      startIndex: 0
     };
 
     const section = document.getElementById('books');
@@ -34,14 +35,16 @@ export default class Book extends Store {
 
     this.prev.addEventListener('click', () => {
       this.setState({
-        page: this.state.page - 1
+        page: this.state.page - 1,
+        startIndex: (this.state.maxResults / this.state.page) - 1
       });
       this.searchBooks();
     });
 
     this.next.addEventListener('click', () => {
       this.setState({
-        page: this.state.page + 1
+        page: this.state.page + 1,
+        startIndex: (this.state.maxResults / this.state.page) - 1
       });
       this.searchBooks();
     });
@@ -51,14 +54,15 @@ export default class Book extends Store {
   }
 
   searchBooks() {
-    const { search, page, maxResults } = this.state;
+    const { search, maxResults, startIndex } = this.state;
 
-    getBooks(search, page, maxResults)
+    getBooks(search, maxResults, startIndex)
       .then(response => {
         this.setState({
           books: response.items,
           total: response.totalItems,
-          error: null
+          error: null,
+          page: this.state.page
         });
       })
       .catch(err => {
