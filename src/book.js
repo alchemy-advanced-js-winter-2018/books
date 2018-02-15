@@ -6,7 +6,7 @@ export default class Book extends Store{
     super();
 
     this.state = {
-      search: null,
+      search: [],
       topic: '',
       title: ''
     };
@@ -25,7 +25,8 @@ export default class Book extends Store{
       this.setState({ topic });
       this.searchBook();
     });
-
+    this.subscribe(() => this.render());
+    this.render();
   }
 
   searchBook(){
