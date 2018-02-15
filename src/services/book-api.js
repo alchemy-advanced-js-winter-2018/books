@@ -6,3 +6,6 @@ export function getBooks(search, page = 1, maxResults = 20) {
   return fetch(url)
     .then(response => response.json());
 }
+
+
+// &startIndex=${ maxResults / page }    Need to get the page to change when clicking next and prev. 
