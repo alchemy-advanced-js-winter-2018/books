@@ -8,7 +8,8 @@ export default class Book extends Store{
     this.state = {
       search: [],
       topic: '',
-      title: ''
+      title: '',
+      searchSize: 10
     };
 
     const section = document.getElementById('bookSect');
@@ -16,7 +17,7 @@ export default class Book extends Store{
     this.heading = section.querySelector('h1');
     this.h2 = section.querySelector('h2');
     this.list = section.querySelector('ul');
-    this.pageSize = section.querySelector('select');
+    this.searchSize = section.querySelector('select');
     this.prev = section.querySelector('#prev');
     this.next = section.querySelector('#next');
 
@@ -26,14 +27,20 @@ export default class Book extends Store{
       this.setState({ topic });
       this.searchBook();
     });
+
+    this.searchSize.addEventListener('change', () => {
+      const searchSize = this.searchSize.value;
+      this.setState({ searchSize });
+      this.searchBook();
+    });
+
     this.subscribe(() => this.render());
     this.render();
   }
 
   searchBook(){
-    const { topic } = this.state;
-    console.log(topic);
-    getBooks(topic)
+    const { topic, searchSize } = this.state;
+    getBooks(topic, searchSize)
       .then(response => {
         this.setState({
           search: response.items,
@@ -50,7 +57,6 @@ export default class Book extends Store{
     list.innerHTML = null;
 
     const { search, topic, totalItems } = this.state;
-    console.log(search);
     if(!search){
       heading.textContent = 'No results';
     }
