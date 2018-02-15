@@ -31,12 +31,13 @@ export default class Book extends Store{
   }
 
   searchBook(){
-    const { search, topic } = this.state;
+    const { topic } = this.state;
     console.log(topic);
     getBooks(topic)
       .then(response => {
         this.setState({
-          search: response.items
+          search: response.items,
+          totalItems: response.totalItems
         });
       }).catch(err=>{
         return ('server error', err);
@@ -48,15 +49,17 @@ export default class Book extends Store{
 
     list.innerHTML = null;
 
-    const { search, topic } = this.state;
+    const { search, topic, totalItems } = this.state;
     console.log(search);
     if(!search){
       heading.textContent = 'No results';
     }
-    h2.innerHTML = `${topic}`;
+
+    h2.innerHTML = `${totalItems} books about ${topic}.`;
+
     search.map(n => {
       const li = document.createElement('li');
-      li.textContent = n.volumeInfo.title;
+      li.textContent = `${n.volumeInfo.title}   ----  by Author: ${n.volumeInfo.authors}`;
       return li;
     })
       .forEach(li => list.appendChild(li));
