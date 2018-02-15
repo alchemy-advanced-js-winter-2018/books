@@ -72,7 +72,7 @@ export default class Book extends Store{
     const { heading, list, h2 } = this;
 
     list.innerHTML = null;
-
+    
     const { search, topic, totalItems } = this.state;
     if(!search){
       heading.textContent = 'No results';
