@@ -60,6 +60,11 @@ export default class Book extends Store{
     search.map(n => {
       const li = document.createElement('li');
       li.textContent = `${n.volumeInfo.title}   ----  by Author: ${n.volumeInfo.authors}`;
+      const link = document.createElement('a');
+      link.textContent = 'preview';
+      link.setAttribute('href', `${n.volumeInfo.previewLink}`);
+      link.setAttribute('target', '=_blank');
+      li.appendChild(link);
       return li;
     })
       .forEach(li => list.appendChild(li));
