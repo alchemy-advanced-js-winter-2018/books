@@ -14,6 +14,7 @@ export default class Book extends Store{
     const section = document.getElementById('bookSect');
     this.form = section.querySelector('form');
     this.heading = section.querySelector('h1');
+    this.h2 = section.querySelector('h2');
     this.list = section.querySelector('ul');
     this.pageSize = section.querySelector('select');
     this.prev = section.querySelector('#prev');
@@ -43,7 +44,7 @@ export default class Book extends Store{
   }
 
   render(){
-    const { heading, list } = this;
+    const { heading, list, h2 } = this;
 
     list.innerHTML = null;
 
@@ -52,7 +53,7 @@ export default class Book extends Store{
     if(!search){
       heading.textContent = 'No results';
     }
-
+    h2.innerHTML = `${topic}`;
     search.map(n => {
       const li = document.createElement('li');
       li.textContent = n.volumeInfo.title;
