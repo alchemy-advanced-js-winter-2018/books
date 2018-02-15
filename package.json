@@ -2,7 +2,7 @@
   "name": "books",
   "version": "1.0.0",
   "description": "An app for searching the google books API. Written by Charly Welch, for Alchemy Code Lab 401 - Advanced JS.",
-  "main": "src/Book.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
