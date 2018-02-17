@@ -16,6 +16,13 @@ You need to create a module in `services` that encapsulates all the specifics of
 * Follow the process of methodically "growing" your app
 * Make your code look like it could be in the demo project
 
+## Bonus
+
+* Check the `response.ok` property from the `fetch` (you need to do this before calling `response.json()`).
+  * If true, return `response.json()`
+  * If false, throw '<error you return>'
+* Add a `catch` to the component call that will set an `error` state
+
 ## Rubric
 
 * Services **3pts**

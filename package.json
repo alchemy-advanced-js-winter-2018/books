@@ -1,0 +1,32 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "An app for searching the google books API. Written by Charly Welch, for Alchemy Code Lab 401 - Advanced JS.",
+  "main": "src/main.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlyWelch/books.git"
+  },
+  "author": "Charly Welch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharlyWelch/books/issues"
+  },
+  "homepage": "https://github.com/CharlyWelch/books#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.18",
+    "html-webpack-plugin": "^2.30.1",
+    "eslint": "^4.17.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "charly-state-store": "^1.0.1",
+    "webpack": "^3.11.0"
+  }
+}
